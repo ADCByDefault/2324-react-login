@@ -1,17 +1,17 @@
 services:
-  web:
+  my_web:
     build: .
     ports:
       - 8080:80
     volumes:
       - "./php:/var/www/html"
-  db:
+  my_db:
     image: mariadb:latest
     environment:
       - MARIADB_ROOT_PASSWORD=ciccio
     volumes:
       - "./mysql:/var/lib/mysql"
-  phpMyAdmin:
+  my_phpMyAdmin:
     image: phpmyadmin
     ports:
       - 8081:80
