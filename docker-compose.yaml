@@ -5,15 +5,18 @@ services:
       - 8080:80
     volumes:
       - "./php:/var/www/html"
-  my_db:
+  my_mariadb:
     image: mariadb:latest
     environment:
       - MARIADB_ROOT_PASSWORD=ciccio
+      - MARIADB_DATABASE=scuola
     volumes:
       - "./mysql:/var/lib/mysql"
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+        
   my_phpMyAdmin:
     image: phpmyadmin
     ports:
       - 8081:80
     environment:
-      - PMA_ARBITRARY=1
+      - PMA_HOST=my_mariadb
