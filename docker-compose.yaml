@@ -13,7 +13,6 @@ services:
     volumes:
       - "./mysql:/var/lib/mysql"
       - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
-        
   my_phpMyAdmin:
     image: phpmyadmin
     ports:
