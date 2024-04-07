@@ -21,7 +21,7 @@ services:
     environment:
       - PMA_HOST=my_mariadb
 
-  nodejs:
+  node:
     user: "1000:1000"
     build:
       context: .
