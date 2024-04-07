@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! -f package.json ]; then
+  rm .gitkeep
+  npx -y create-react-app . 
+fi
+npm install
+npm start
