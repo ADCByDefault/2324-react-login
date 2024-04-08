@@ -1,19 +1,28 @@
 services:
   my_web:
-    build: .
+    build:
+      context: ./build
+      dockerfile: Dockerfile.php
     ports:
       - 8080:80
     volumes:
       - "./php:/var/www/html"
+
   my_mariadb:
-    image: mariadb:latest
-    user: ${UID}:${GID}
+    user: ${MY_UID}:${MY_GID}
+    build:
+      context: ./build
+      dockerfile: Dockerfile.mariadb
+      args:
+        UID: ${MY_UID}
+        GID: ${MY_GID}
     environment:
       - MARIADB_ROOT_PASSWORD=ciccio
       - MARIADB_DATABASE=scuola
     volumes:
       - "./mysql:/var/lib/mysql"
-      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "./build/init.sql:/docker-entrypoint-initdb.d/init.sql"
+
   my_phpMyAdmin:
     image: phpmyadmin
     ports:
@@ -22,9 +31,9 @@ services:
       - PMA_HOST=my_mariadb
 
   node:
-    user: ${UID}:${GID}
+    user: ${MY_UID}:${MY_GID}
     build:
-      context: .
+      context: ./build
       dockerfile: Dockerfile.node
     ports:
       - 3000:3000
