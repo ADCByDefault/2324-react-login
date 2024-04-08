@@ -7,6 +7,7 @@ services:
       - "./php:/var/www/html"
   my_mariadb:
     image: mariadb:latest
+    user: ${UID}:${GID}
     environment:
       - MARIADB_ROOT_PASSWORD=ciccio
       - MARIADB_DATABASE=scuola
@@ -21,7 +22,7 @@ services:
       - PMA_HOST=my_mariadb
 
   node:
-    user: "1001:1001"
+    user: ${UID}:${GID}
     build:
       context: .
       dockerfile: Dockerfile.node
