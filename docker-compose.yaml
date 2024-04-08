@@ -21,7 +21,7 @@ services:
       - PMA_HOST=my_mariadb
 
   node:
-    user: "1001:1000"
+    user: "1001:1001"
     build:
       context: .
       dockerfile: Dockerfile.node
