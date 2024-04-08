@@ -6,6 +6,8 @@ EXPOSE 80
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
-CMD ["/entrypoint.sh"]
+RUN groupadd informatica -g1001
+RUN adduser --disabled-password --uid 1001 --gid 1001 --gecos "" informatica
+USER informatica
 
-# docker run --rm -name myPhp -v ${PWD}/:/var/www/html -p 8080:80 benvenuti/php-composer:1.1
+CMD ["/entrypoint.sh"]
