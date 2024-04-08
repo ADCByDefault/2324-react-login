@@ -35,6 +35,9 @@ services:
     build:
       context: ./build
       dockerfile: Dockerfile.node
+      args:
+        UID: ${MY_UID}
+        GID: ${MY_GID}
     ports:
       - 3000:3000
     volumes:
