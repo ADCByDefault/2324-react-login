@@ -1,5 +1,3 @@
-mysql
-!mysql/.gitkeep
 
 app
 !app/.gitkeep
