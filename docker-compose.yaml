@@ -5,6 +5,9 @@ services:
     build:
       context: ./build
       dockerfile: Dockerfile.php
+      args:
+        UID: ${MY_UID}
+        GID: ${MY_GID}      
     ports:
       - 8080:80
     volumes:
