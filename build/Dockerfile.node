@@ -1,4 +1,6 @@
 FROM node
+ARG UID
+ARG GID
 EXPOSE 3000
 ADD entrypoint-node.sh /entrypoint-node.sh
 RUN groupadd -f informatica -g$GID
