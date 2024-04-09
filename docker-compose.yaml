@@ -1,6 +1,7 @@
 services:
   my_web:
     container_name: my_web
+    user: ${MY_UID}:${MY_GID}
     build:
       context: ./build
       dockerfile: Dockerfile.php
