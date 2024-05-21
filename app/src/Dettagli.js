@@ -10,18 +10,18 @@ export default function Dettagli({props}) {
         const json = await response.json();
         console.log(json);
         setInfo(<div>
-                <p>id : {json.id}</p>
-                <p>username : {json.username}</p>
-                <p>email : {json.email}</p>
-                <p>token : {json.token}</p>
-                <p>reg_date : {json.reg_date}</p>
+                <p>id : <span>{json.id}</span></p>
+                <p>username : <span>{json.username}</span></p>
+                <p>email : <span>{json.email}</span></p>
+                <p>token : <span>{json.token}</span></p>
+                <p>reg_date : <span>{json.reg_date}</span></p>
             </div>
             );
     }
     useEffect(()=>{
         getData();
     },[]);
-    return (<div>
+    return (<div className="dettagli-container">
         {info}
     </div>);
 }
